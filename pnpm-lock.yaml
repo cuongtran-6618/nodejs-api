@@ -8,14 +8,23 @@ dependencies:
   date-fns:
     specifier: ^2.30.0
     version: 2.30.0
+<<<<<<< HEAD
   uuid:
     specifier: ^9.0.1
     version: 9.0.1
+=======
+>>>>>>> 96ea52b16e0486ff4d0a4432aa467ac797c8a754
 
 devDependencies:
   nodemon:
     specifier: ^3.0.1
     version: 3.0.1
+<<<<<<< HEAD
+=======
+  uuid:
+    specifier: ^9.0.1
+    version: 9.0.1
+>>>>>>> 96ea52b16e0486ff4d0a4432aa467ac797c8a754
 
 packages:
 
@@ -263,7 +272,11 @@ packages:
   /uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
+<<<<<<< HEAD
     dev: false
+=======
+    dev: true
+>>>>>>> 96ea52b16e0486ff4d0a4432aa467ac797c8a754
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
