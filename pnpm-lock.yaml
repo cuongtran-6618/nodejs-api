@@ -8,23 +8,17 @@ dependencies:
   date-fns:
     specifier: ^2.30.0
     version: 2.30.0
-<<<<<<< HEAD
   uuid:
     specifier: ^9.0.1
     version: 9.0.1
-=======
->>>>>>> 96ea52b16e0486ff4d0a4432aa467ac797c8a754
 
 devDependencies:
   nodemon:
     specifier: ^3.0.1
     version: 3.0.1
-<<<<<<< HEAD
-=======
-  uuid:
-    specifier: ^9.0.1
-    version: 9.0.1
->>>>>>> 96ea52b16e0486ff4d0a4432aa467ac797c8a754
+  typescript:
+    specifier: ^5.2.2
+    version: 5.2.2
 
 packages:
 
@@ -265,6 +259,12 @@ packages:
       nopt: 1.0.10
     dev: true
 
+  /typescript@5.2.2:
+    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
+
   /undefsafe@2.0.5:
     resolution: {integrity: sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==}
     dev: true
@@ -272,11 +272,7 @@ packages:
   /uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
-<<<<<<< HEAD
     dev: false
-=======
-    dev: true
->>>>>>> 96ea52b16e0486ff4d0a4432aa467ac797c8a754
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
