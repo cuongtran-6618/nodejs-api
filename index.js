@@ -1,7 +1,7 @@
 const logEvents = require("./logEvents");
 const EventEmitter = require("events");
 
-class EventEmitterExtend extends EventEmitter {}
+class EventEmitterExtend extends EventEmitter { };
 
 const eventEmitterExtend = new EventEmitterExtend();
 

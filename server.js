@@ -1,17 +1,14 @@
-console.log('server init');
+const { log } = require("console");
+const http = require("http");
+const port = 3001;
+const hostName = "127.0.0.1";
 
-// import os, get information about the localhost OS
-const os = require('os');
-// import path
-const path = require('path');
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/plain");
+  res.end("Helloworld");
+});
 
-console.log(os.type());
-console.log(os.version());
-console.log(os.homedir());
-
-console.log(__dirname);
-console.log(__filename);
-
-console.log(path.dirname(__filename));
-console.log(path.basename(__filename));
-console.log(path.extname(__filename));
+server.listen(port, hostName, () => {
+  console.log(`Server running at http://${hostName}:${port}/`);
+});
