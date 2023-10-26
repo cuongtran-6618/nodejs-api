@@ -1,4 +1,3 @@
-const { log } = require("console");
 const http = require("http");
 const port = 3001;
 const hostName = "127.0.0.1";
