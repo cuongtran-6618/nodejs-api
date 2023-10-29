@@ -4,3 +4,4 @@ node_modules/
 
 #Apple customization file
 .DS_Store
+logs/
