@@ -6,7 +6,7 @@ const fspromise = require("fs").promises;
 const path = require("path");
 
 // Write down the message with time formatting and unique identifier
-const logEvents = async (message) => {
+const logEvents = async (message, logName) => {
   const dateTime = `${format(new Date(), "dd-MM-yyyy")}`;
   const logItem = `${dateTime}\t${uuidv4()}\t${message}`;
 
@@ -17,10 +17,7 @@ const logEvents = async (message) => {
     }
 
     // append the log item to the event log file
-    await fspromise.appendFile(
-      path.join(__dirname, "logs", "eventLog.txt"),
-      logItem
-    );
+    await fspromise.appendFile(path.join(__dirname, "logs", logName), logItem);
   } catch (err) {
     console.log(err);
   }

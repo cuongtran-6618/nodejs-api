@@ -12,10 +12,12 @@ class Emitter extends EventEmitter {}
 // initialize the object
 const myEmitter = new Emitter();
 
+myEmitter.on("log", (msg, fileName) => logEvents(msg, fileName));
 const PORT = process.env.PORT || 3500;
 
 // create the server
 const server = http.createServer((req, res) => {
+  myEmitter.emit("log", `${req.url}\t${req.method}\n`, `reqLog.txt`);
   const extention = path.extname(req.url);
   let contentType = getFileExtention(extention);
 
@@ -49,18 +51,43 @@ const server = http.createServer((req, res) => {
   }
 });
 
+/**
+ * Read the contents of the file and return the contents in the response
+ * @param {*} filePath
+ * @param {*} contentType
+ * @param {*} response
+ */
 const serveFile = async (filePath, contentType, response) => {
   try {
-    const data = await fsPromises.readFile(filePath, "utf-8");
-    response.writeHead(200, { "Content-Type": contentType });
+    // if it is not an inmage file then use uft-8
+    let rawData = await fsPromises.readFile(
+      filePath,
+      !contentType.includes("image") ? "utf-8" : ""
+    );
+
+    const isJsonData = contentType === "application/json";
+    const data = isJsonData ? JSON.stringify(JSON.parse(rawData)) : rawData;
+
+    response.writeHead(getStatusBaseOnFilepath(filePath), {
+      "Content-Type": contentType,
+    });
+
     response.end(data);
   } catch (error) {
     console.log(error);
+    myEmitter.emit("log", `${error.name}: ${error.message}`, `errorLog.txt`);
     response.statusCode = 500;
     response.end();
   }
 };
 
+/**
+ *  kinde of router
+ * @param {*} req
+ * @param {*} isHtmlFile
+ * @param {*} indexPagePath
+ * @returns
+ */
 const getFilePath = (req, isHtmlFile, indexPagePath) => {
   path.join(__dirname, "views", "index.html");
   return !isHtmlFile
@@ -68,6 +95,14 @@ const getFilePath = (req, isHtmlFile, indexPagePath) => {
     : req.url === "/" || req.url.slice(-1) === "/"
     ? indexPagePath
     : path.join(__dirname, "views", req.url);
+};
+
+const getStatusBaseOnFilepath = (filePath) => {
+  if (filePath.includes("404.html")) {
+    return 404;
+  } else {
+    return 200;
+  }
 };
 
 const getFileExtention = (extention) => {
