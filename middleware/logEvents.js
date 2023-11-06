@@ -13,14 +13,19 @@ const logEvents = async (message, logName) => {
   try {
     // creat the folder if it doesn't exist
     if (!fs.existsSync(path.join(__dirname, "logs"))) {
-      await fspromise.mkdir(path.join(__dirname, "logs"));
+      await fspromise.mkdir(path.join(__dirname, "../logs"));
     }
 
     // append the log item to the event log file
-    await fspromise.appendFile(path.join(__dirname, "logs", logName), logItem);
+    await fspromise.appendFile(path.join(__dirname, "../logs", logName), logItem);
   } catch (err) {
     console.log(err);
   }
 };
 
-module.exports = logEvents;
+const logger = (req, res, next) => {
+  logEvents(`${req.method} ${req.headers.origin} ${req.url}`, 'reqLog.txt');
+  next();
+}
+
+module.exports = {logger, logEvents};
