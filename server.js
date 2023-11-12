@@ -35,6 +35,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "/public")));
 
 // routes
+app.use("/employees", require("./routes/api/employees"));
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
